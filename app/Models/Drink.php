@@ -18,4 +18,13 @@ class Drink extends Model
    // const CREATED_AT = "Létrehozás";
     //const UPDATED_IT = "Frissítve";
     //public $timestamps = false;
+
+    public function type() {
+
+        return $this->belongsTo(Type::class);
+    }
+    public function package() {
+
+        return $this->belongsTo(Package::class);
+    }
 }

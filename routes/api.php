@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DrinkController;
+use App\Http\Controllers\api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("/drinks",[DrinkController::class,"getDrinks"]);
 Route::get("/onedrink/{drink}",[DrinkController::class,"getOneDrinks"]);
 Route::post("/adddrink",[DrinkController::class,"getAddDrinks"]);
+Route::put("/modifydrink",[DrinkController::class,"modifyDrink"]);
+Route::delete("/deletedrink",[DrinkController::class,"deleteDrink"]);
+Route::post("/register",[AuthController::class,"register"]);
+Route::post("/login",[AuthController::class,"login"]);

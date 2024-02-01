@@ -8,7 +8,7 @@ use App\Models\Drink;
 class DrinkController extends Controller
 {
    public function getDrinks(){
-    $drinks = Drink::all();
+    $drinks = Drink::with("type","package")->get();
 
     return $drinks;
    } 
@@ -31,5 +31,18 @@ class DrinkController extends Controller
     $drink->save();
 
     return "OK";
+   }
+   public function modifyDrink(Request $request){
+      $drink = Drink::find($request["id"]);
+
+      $drink->drink =$request["drink"];
+
+      $drink->save();
+      return "ok";
+   }
+   public function deleteDrink(Request $request){
+      $drink = Drink::find($request["id"]);
+      $drink->delete();
+      return "ok";
    }
 }
